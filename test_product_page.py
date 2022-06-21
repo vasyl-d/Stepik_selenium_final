@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from .pages.product_page import ProductPage
+from .pages.basket_page import BasketPage
 import pytest
 
 class TestProductToBasket():
@@ -61,4 +62,15 @@ class TestProductToBasket():
         link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
         page = ProductPage(browser, link)
         page.open() 
-        page.go_to_login_page()   
+        page.go_to_login_page()
+
+
+    def test_guest_cant_see_product_in_basket_opened_from_product_page(self, browser):
+        link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+        page = ProductPage(browser, link)
+        page.open()
+        page.should_be_basket_link()
+        page.go_to_basket()
+        b_page = BasketPage(browser, browser.current_url)
+        b_page.should_be_basket_empty()
+        b_page.should_empty_message_present()   
