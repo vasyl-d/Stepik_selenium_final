@@ -20,3 +20,4 @@ class ProductPageLocators():
     BASKET_BUTTON = (By.CSS_SELECTOR, ".basket-mini a.btn-default")
     ALERT_PRODUCT_NAME = (By.CSS_SELECTOR, ".alert-success .alertinner strong")
     ALERT_PRODUCT_PRICE = (By.CSS_SELECTOR, ".alert-info .alertinner p strong")
+    SUCCESS_MESSAGE = (By.CSS_SELECTOR, ".alert-success")

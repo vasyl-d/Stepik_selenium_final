@@ -26,7 +26,7 @@ class BasePage():
 
     def is_not_element_present(self, how, what, timeout=4):
         '''проверка что єлемента на странице нет
-           (how, what) - это клортеж из locators
+           (how, what) - это кортеж из locators
         '''
         try:
             WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located((how, what)))

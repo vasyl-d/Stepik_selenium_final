@@ -23,9 +23,6 @@ class ProductPage(BasePage):
         self.product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text
         basket_butt.click()
         self.solve_quiz_and_get_code()
-        sleep(1)
-        #basket_link = self.browser.find_element(*ProductPageLocators.BASKET_BUTTON)
-        #basket_link.click()
         
     def should_be_add_to_basket(self):
         assert self.is_element_present(*ProductPageLocators.PRODUCT_ADD_BASKET), "Не нашли кнопку добавления в корзину " + self.error_msg
@@ -52,3 +49,9 @@ class ProductPage(BasePage):
     def should_be_price_correct(self):
         product_price = self.browser.find_element(*ProductPageLocators.ALERT_PRODUCT_PRICE).text
         assert (product_price == self.product_price), "Цена не совпадает " + product_price + "<>" + self.product_price
+    
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), "Сообщение об успехе присутствует "
+
+    def should_message_dissapeared(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), "Сообщение не исчезло после тайм-аута"
