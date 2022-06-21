@@ -1,6 +1,6 @@
 from .base_page import BasePage
 from .locators import ProductPageLocators
-from time import sleep
+#from time import sleep
 
 
 class ProductPage(BasePage):

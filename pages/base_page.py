@@ -3,6 +3,7 @@ import math
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC 
 from selenium.common.exceptions import TimeoutException
+from .locators import BasePageLocators
 
 class BasePage():
     def __init__(self, browser, url, timeout=10):
@@ -12,9 +13,15 @@ class BasePage():
         self.browser.implicitly_wait(timeout)
 
     def open(self): 
-        # ваша реализация
-        self.browser.get(self.url)        
+        self.browser.get(self.url)
 
+    def go_to_login_page(self):
+        link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
+        link.click()
+
+    def should_be_login_link(self):
+        assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
+            
     def is_element_present(self, how, what):
         #проверка присутствия єлемента на странице
         try:
