@@ -20,3 +20,17 @@ class LoginPage(BasePage):
     def should_be_register_form(self):
         # реализуйте проверку, что есть форма регистрации на странице
         assert self.is_element_present(*LoginPageLocators.REGISTER_FORM), "Не нашли форму регистрации: " + self.error_msg
+
+    def register_new_user(self, email, password):
+        try:
+            e_email = self.browser.find_element(*LoginPageLocators.REGISTER_EMAIL)
+            e_password1 = self.browser.find_element(*LoginPageLocators.REGISTER_PASS1)
+            e_password2 = self.browser.find_element(*LoginPageLocators.REGISTER_PASS2)
+            e_email.send_keys(email)
+            e_password1.send_keys(password)
+            e_password2.send_keys(password)
+            self.browser.find_element(*LoginPageLocators.REGISTER_SUBMIT).click()
+        except Exception as ex:
+            self.error_msg = f"An exception of type {type(ex).__name__} случилось."
+            return False
+        return True

@@ -4,6 +4,7 @@ from .pages.login_page import LoginPage
 from .pages.basket_page import BasketPage 
 import pytest
 
+@pytest.mark.login
 class TestMainPage1():
 
     @pytest.mark.skip

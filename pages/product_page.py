@@ -22,7 +22,8 @@ class ProductPage(BasePage):
         self.product_name = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).text
         self.product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text
         basket_butt.click()
-        self.solve_quiz_and_get_code()
+        #для решения задач с капечй в алерте
+        #self.solve_quiz_and_get_code()
         
     def should_be_add_to_basket(self):
         assert self.is_element_present(*ProductPageLocators.PRODUCT_ADD_BASKET), "Не нашли кнопку добавления в корзину " + self.error_msg
