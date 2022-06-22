@@ -34,7 +34,7 @@ class BasePage():
         link.click()
 
     def is_element_present(self, how, what):
-        #проверка присутствия єлемента на странице
+        '''проверка присутствия єлемента на странице'''
         try:
             self.browser.find_element(how, what)
         except Exception as ex:

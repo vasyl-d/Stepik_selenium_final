@@ -1,6 +1,5 @@
 from .base_page import BasePage
 from .locators import ProductPageLocators
-#from time import sleep
 
 
 class ProductPage(BasePage):
@@ -18,11 +17,12 @@ class ProductPage(BasePage):
 
 
     def add_to_basket(self):
+        ''' добавление товара в корзину. перед єтим запоминаем название и цену товара на его странице'''
         basket_butt = self.browser.find_element(*ProductPageLocators.PRODUCT_ADD_BASKET)
         self.product_name = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).text
         self.product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text
         basket_butt.click()
-        #для решения задач с капечй в алерте
+        #для решения задач с капечей в алерте нужно раскомментить
         #self.solve_quiz_and_get_code()
         
     def should_be_add_to_basket(self):
